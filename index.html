@@ -197,6 +197,73 @@
             color: #2c3e50;
         }
         
+        /* Отзывы */
+.reviews {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.reviews-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    color: #2c3e50;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.review-item {
+    background-color: transparent; /* Убрали фон */
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none; /* Убрали границу */
+    display: flex; /* Добавили flex для правильного позиционирования */
+    flex-direction: column;
+}
+
+.review-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.review-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s;
+    border-radius: 8px; /* Добавили скругление углов */
+    object-fit: cover; /* Обеспечивает правильное заполнение */
+}
+
+.review-item:hover .review-img {
+    transform: scale(1.02);
+}
+
+/* Для адаптивности */
+@media (max-width: 768px) {
+    .reviews-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .reviews-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+    
+    .review-img {
+        max-width: 100%;
+    }
+}
+        
         /* Призыв к действию */
         .cta-section {
             padding: 80px 0;
@@ -290,6 +357,10 @@
             .step {
                 max-width: 100%;
             }
+            
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 480px) {
@@ -297,7 +368,7 @@
                 font-size: 1.8rem;
             }
             
-            .section-title {
+            .section-title, .reviews-title {
                 font-size: 1.8rem;
             }
             
@@ -309,21 +380,23 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 15px;
+            }
+            
             .logo-img {
-    width: 60px !important;
-    height: 60px !important;
-    object-fit: contain !important;
-    display: block;
-}	
+                width: 60px !important;
+                height: 60px !important;
+                object-fit: contain !important;
+                display: block;
+            }	
             
             .logo {
-    display: flex;
-    align-items: center;
-    gap: 15px; /* Увеличьте с 12px до 15px или больше */
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: #2c3e50;
-}
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                font-weight: 700;
+                font-size: 1.5rem;
+                color: #2c3e50;
+            }
         }
     </style>
 </head>
@@ -341,6 +414,7 @@
                     <ul>
                         <li><a href="#features">Преимущества</a></li>
                         <li><a href="#how-it-works">Как работает</a></li>
+                        <li><a href="#reviews">Отзывы</a></li>
                         <li><a href="#cta">Начать поиск</a></li>
                     </ul>
                 </nav>
@@ -351,7 +425,9 @@
     <!-- Герой-секция -->
     <section class="hero">
         <div class="container">
-            <h1>Телеграм бот по поиску квартир по всей Беларуси</h1>
+            <h1>Телеграм бот по поиску квартир в Беларуси 
+    <img src="flag.png" alt="Флаг Беларуси" style="width: 48px; height: 48px; vertical-align: middle; vertical-align: -0.2em;">
+</h1>
             <p>Найдите идеальную квартиру без лишних усилий. Бот присылает самые свежие квартиры для аренды или покупки. Работает быстрее, чем риэлторы. Более 500 пользователей в месяц.</p>
             <a href="https://t.me/kvatera_bot" class="cta-button">Запустить бота <i class="fas fa-arrow-right"></i></a>
         </div>
@@ -415,6 +491,30 @@
         </div>
     </section>
 
+    <!-- Отзывы -->
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <h2 class="reviews-title">Отзывы наших пользователей</h2>
+            <div class="reviews-grid">
+                <!-- Вставьте ваши скриншоты с отзывами здесь -->
+                <!-- Пример 1: Замените src на путь к вашему изображению -->
+                <div class="review-item">
+                    <img src="review1.jpg" alt="Отзыв пользователя 1" class="review-img">
+                </div>
+                
+                <!-- Пример 2 -->
+                <div class="review-item">
+                    <img src="review2.jpg" alt="Отзыв пользователя 2" class="review-img">
+                </div>
+                
+                <!-- Пример 3 -->
+                <div class="review-item">
+                    <img src="review3.jpg" alt="Отзыв пользователя 3" class="review-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Призыв к действию -->
     <section id="cta" class="cta-section">
         <div class="container">
@@ -452,7 +552,7 @@
         
         // Анимация карточек при прокрутке
         function checkScroll() {
-            const cards = document.querySelectorAll('.feature-card, .step');
+            const cards = document.querySelectorAll('.feature-card, .step, .review-item');
             const triggerBottom = window.innerHeight * 0.9;
             
             cards.forEach(card => {
@@ -470,7 +570,7 @@
         window.addEventListener('load', checkScroll);
         
         // Устанавливаем начальные стили для анимации
-        document.querySelectorAll('.feature-card, .step').forEach(card => {
+        document.querySelectorAll('.feature-card, .step, .review-item').forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(20px)';
             card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
@@ -478,8 +578,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-

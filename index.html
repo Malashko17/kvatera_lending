@@ -309,7 +309,21 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 15px;
-            }
+            .logo-img {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: contain !important;
+    display: block;
+}	
+            
+            .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Увеличьте с 12px до 15px или больше */
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
         }
     </style>
 </head>
@@ -319,7 +333,8 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-robot logo-icon"></i>
+                    <!-- Логотип с исправленным классом -->
+                    <img src="logo.png" alt="КВАТЭРА логотип" class="logo-img" style="width: 60px; height: 60px; object-fit: contain;">
                     <span>КВАТЭРА</span>
                 </div>
                 <nav>
@@ -463,4 +478,5 @@
     </script>
 </body>
 </html>
+
 

@@ -127,17 +127,20 @@
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(4, 1fr); /* 4 колонки в ряд */
+            gap: 20px; /* Уменьшил отступ между карточками */
         }
         
         .feature-card {
             background-color: #f8fafc;
-            padding: 30px;
+            padding: 25px 20px; /* Уменьшил padding для компактности */
             border-radius: 10px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
             border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Чтобы все карточки были одной высоты */
         }
         
         .feature-card:hover {
@@ -146,15 +149,22 @@
         }
         
         .feature-icon {
-            font-size: 2.5rem;
+            font-size: 2.2rem; /* Немного уменьшил иконки */
             color: #3498db;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .feature-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
+            font-size: 1.2rem; /* Немного уменьшил заголовки */
+            margin-bottom: 12px;
             color: #2c3e50;
+            line-height: 1.3;
+        }
+        
+        .feature-card p {
+            font-size: 0.95rem; /* Немного уменьшил текст */
+            line-height: 1.5;
+            flex-grow: 1; /* Равномерное распределение пространства */
         }
         
         /* Как это работает */
@@ -335,6 +345,17 @@
         }
         
         /* Адаптивность */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr); /* На планшетах 2 колонки */
+                gap: 25px;
+            }
+            
+            .feature-card {
+                padding: 25px;
+            }
+        }
+        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -360,6 +381,15 @@
             
             .reviews-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr; /* На мобильных 1 колонка */
+                gap: 20px;
+            }
+            
+            .feature-card {
+                padding: 20px;
             }
         }
         
@@ -428,7 +458,7 @@
             <h1>Телеграм бот по поиску квартир в Беларуси 
     <img src="flag.png" alt="Флаг Беларуси" style="width: 48px; height: 48px; vertical-align: middle; vertical-align: -0.2em;">
 </h1>
-            <p>Найдите идеальную квартиру без лишних усилий. Бот присылает самые свежие квартиры для аренды или покупки. Работает быстрее, чем риэлторы. Более 750 пользователей в месяц.</p>
+            <p>Найдите идеальную квартиру без лишних усилий. Бот присылает самые свежие квартиры для аренды или покупки. Работает быстрее, чем риэлторы. Более 1000 пользователей в месяц.</p>
             <a href="https://t.me/kvatera_bot" class="cta-button">Запустить бота <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
@@ -460,6 +490,15 @@
                     </div>
                     <h3>Экономия времени</h3>
                     <p>Запускайте бота и ждите, пока он автоматически пришлет уведомление о новой квартире.</p>
+                </div>
+                
+                <!-- НОВЫЙ БЛОК: Поиск соседа -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Поиск соседа</h3>
+                    <p>Найдите соседей для совместной аренды квартиры в разных городах Беларуси</p>
                 </div>
             </div>
         </div>
@@ -578,4 +617,3 @@
     </script>
 </body>
 </html>
-
